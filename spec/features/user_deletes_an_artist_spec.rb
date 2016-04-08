@@ -13,9 +13,7 @@ save_and_open_page
     #breaks here because when you click on the artist you can't find them
     click_on "Delete Artist"
 
-    visit '/artists'
-
-    expect(current_path).to eq artist_path
+    expect(current_path).to eq artists_path
     expect(page).not_to_have_content "Bob Marley"
   end
 

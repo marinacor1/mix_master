@@ -11,5 +11,9 @@ RSpec.feature "User can edit an artist" do
     fill_in "artist_name", with: "Bob Marley"
     fill_in "artist_image_path", with: artist_image_path
     click_on "Create Artist"
+
+    expect(current_path).to eq artist_path
+    expect(page).not_to_have_content "Bob Marley"
+
   end
 end
