@@ -31,10 +31,10 @@ class ArtistsController < ApplicationController
   end
 
   def destroy
-    @artist = Artist.find(params[:id])
-    @artist.destroy
+    artist = Artist.find(params[:id])
+    artist.destroy
     redirect_to artist_path
-    flash.notice = "Artist #{@artist.name} Deleted!"
+    flash.notice = "Artist #{artist.name} Deleted!"
   end
 
 private
