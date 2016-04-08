@@ -1,28 +1,11 @@
-== README
+Mix Master ReadMe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: 2.3.0
 
-Things you may want to cover:
+* Run bundle after cloning for all the gems necessary.
 
-* Ruby version
+* How to run the test suite: run rspec on your command line.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Current function:
+Allows you to create an artist and view the artist and an image. Basic CRUD functionality with artists.
+Allows you to view an artist and his/ her music, you can then add songs to the list.
