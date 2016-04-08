@@ -1,18 +1,13 @@
 require 'rails_helper'
 
-RSpec.feature "User can delete an artist" do
+RSpec.feature "User deletes an existing artist" do
   scenario "they are redirected to the artists index and do not see the artist name" do
-    artist_name = "Bob Marley"
-    artist_image_path = "http://cps-static.rovicorp.com/3/JPG_400/MI0003/146/MI0003146038.jpg"
+    artist        = Artist.create(name: "Bob Marley", image_path: "http://cps-static.rovicorp.com/3/JPG_400/MI0003/146/MI0003146038.jpg")
 
-    artist = Artist.create(name: artist_name, image_path: artist_image_path)
-
-    visit artists_path(artist)
-    #breaks here because when you click on the artist you can't find them
-    click_on "Delete Artist"
+    visit artist_path(artist)
+    click_on "Delete"
 
     expect(page).to_not have_content artist.name
     expect(page).to_not have_css("img[src=\"#{artist.image_path}\"]")
-    end
-
+  end
 end
