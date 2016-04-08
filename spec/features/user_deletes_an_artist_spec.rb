@@ -15,7 +15,7 @@ RSpec.feature "User can delete an artist" do
 
     visit '/artists'
 
-    expect(page).to have_content "Deleted artists"
+    expect(page).to have_content "Deleted"
   end
 
 end
