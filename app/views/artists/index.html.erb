@@ -1,7 +1,9 @@
 <h1>All Artists</h1>
-<%= @artists.map do |artist| %>
+<p><%= link_to "New artist", new_artist_path %></p>
+<ul>
+  <%= @artists.map do |artist| %>
 <p><%= artist.name %></p>
-    <%= link_to artist.name, artist_path(artist)%>
+  <li><%= link_to artist.name, artist_path(artist)%></li>
 <%= image_tag artist.image_path %>
 <% end  %>
-<p><%= link_to "New artist", new_artist_path, class: "new_artists" %></p>
+</ul>
