@@ -1,5 +1,6 @@
 <h1>All Artists</h1>
 <%= @artists.map do |artist| %>
 <p><%= artist.name %></p>
+<%= image_tag artist.image_path %>
 <% end  %>
 <p><%= link_to "New artist", new_artist_path, class: "new_artists" %></p>
