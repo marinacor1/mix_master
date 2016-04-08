@@ -18,8 +18,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'shoulda-matchers'
-end
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
