@@ -1,5 +1,7 @@
 <h1>All Playlists</h1>
 <p><%= link_to "New Playlist", new_playlist_path %><p>
+  <li>
 <% @playlists.map do |f| %>
 <p><%= link_to f.name, playlist_path(f)%></p>
 <% end %>
+</li>

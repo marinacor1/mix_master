@@ -2,22 +2,23 @@ require 'rails_helper'
 
 RSpec.feature "user views all playlists" do
   scenario "user can see all playlist on page" do
-    song_one, song_two, song_three = create_list(:song, 3)
 
     playlist_name = "Mis canciones"
+    playlist_two = "Jamming nights"
+    Playlist.create(name: playlist_name)
+    Playlist.create(name: playlist_two)
 
     visit 'playlists'
-save_and_open_page
-    expect(page).to have_content song_one
-    expect(page).to have_content song_two
-    expect(page).to have_content song_three
+
+    expect(page).to have_content playlist_name
+    expect(page).to have_content playlist_two
 
     within("li:first") do
-      expect(page).to have_link song_one.title, href: song_path(song_one)
+      expect(page).to have_link playlist_name
     end
 
     within("li:last") do
-      expect(page).to have_link song_three.title, href: song_path(song_three)
+      expect(page).to have_link playlist_two
     end
 
   end
