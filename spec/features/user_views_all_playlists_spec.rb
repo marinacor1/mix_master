@@ -6,8 +6,8 @@ RSpec.feature "user views all playlists" do
 
     playlist_name = "Mis canciones"
 
-    visit playlist_path
-
+    visit 'playlists'
+save_and_open_page
     expect(page).to have_content song_one
     expect(page).to have_content song_two
     expect(page).to have_content song_three
