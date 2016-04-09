@@ -17,13 +17,13 @@ class SongsController < ApplicationController
   end
 
   def edit
-    @artist = Artist.find(params[:artist_id])
+    @artist = Artist.find(params[:id])
     @song = @artist.song.find(params[:id])
   end
 
   def show
-    @artist = Artist.find(params[:artist_id])
     @song = Song.find(params[:id])
+    @artist = @song.artist
   end
 
   def destroy

@@ -9,7 +9,6 @@ RSpec.feature "user can edit a song" do
     updated_title = "One Love"
 
     visit song_path(song)
-    save_and_open_page
 
     click_on "Edit Song"
     fill_in "song_title", with: updated_title
