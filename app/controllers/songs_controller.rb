@@ -1,11 +1,15 @@
 class SongsController < ApplicationController
+  def index
+    @songs = Song.all
+  end
+
   def new
-    @artist = Artist.find(params[:artist_id])
-    @song = @artist.songs.new
+    @artist = Artist.find(params[:artist_id]) #we need to find the artist
+    @song = @artist.songs.new #create the song
   end
 
   def create
-    @artist = Artist.find(params[:artist_id])
+    @artist = Artist.find(params[:artist_id]) #error here
     @song = @artist.songs.create(song_params)
     redirect_to song_path(@song)
   end
@@ -17,8 +21,9 @@ class SongsController < ApplicationController
   end
 
   def edit
-    @artist = Artist.find(params[:id])
-    @song = @artist.song.find(params[:id])
+    #params = {"controller"=>"songs", "action"=>"edit", "id"=>"179"}
+    @song = Song.find(params[:id]) #error here
+    # @song = @song.artist #worked with rick on this one
   end
 
   def show
