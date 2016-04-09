@@ -12,4 +12,13 @@ RSpec.describe ArtistsController, type: :controller do
       #check to see instance variable is rendered
     end
   end
+
+  describe "GET #show" do
+    it "assigns the specific artist as @artist and shows the show template" do
+      artist = create(:artist)
+      get(:show, {:id => artist.to_param}) #passing in specific artist id
+      expect(assigns(:artist)).to eq(artist)
+      expect(response).to render_template("show")
+    end
+  end
 end
