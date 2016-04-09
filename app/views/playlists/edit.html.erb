@@ -1,7 +1,8 @@
 <h1> Edit the Playlist</h1>
 <%= form_for(@playlist) do |f| %>
 
-<%= f.label :name %>
+<%= f.label :playlist_name %>
+<%= f.text_field :name %>
 <% Song.all.map do |song| %>
 <div>
   <%= check_box_tag(:song_ids, song.id, false, :name => 'playlist[song_ids][]', id: "song-#{song.id}") %>

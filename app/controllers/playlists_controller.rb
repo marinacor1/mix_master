@@ -22,10 +22,10 @@ class PlaylistsController < ApplicationController
 
   def update
     @playlist = Playlist.find(params[:id])
-    @song.update(song_params)
-    redirect_to @song
+    @playlist.update(playlist_params)
+    redirect_to @playlist
   end
-  
+
   private
 
   def playlist_params
