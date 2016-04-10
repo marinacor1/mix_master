@@ -5,7 +5,6 @@ RSpec.describe ArtistsController, type: :controller do
     it "assigns all artists as @artists and renders the index template" do
       artist = create(:artist) #create artist
       get(:index)
-
       expect(assigns(:artists)).to eq ([artist]) #check to make sure that the instance variable equals array in database
 #assigns(:artist) is syntax to access instance vriable
       expect(response).to render_template("index")
@@ -38,7 +37,6 @@ RSpec.describe ArtistsController, type: :controller do
     end
   end
 
-
   #was artist created?
   #did the instance variable get assigned?
   #was it properly redirected to the artist show page?
@@ -48,8 +46,8 @@ RSpec.describe ArtistsController, type: :controller do
       it "creates a new artist" do
         expect {
           post :create, {:artist => attributes_for(:artist)}
-          }.to change(Artist, :count).by(1)
-        end
+        }.to change(Artist, :count).by(1)
+      end
 
       it "assigns a newly created artist as @artist" do
         post :create, {:artist => attributes_for(:artist)}
@@ -59,9 +57,7 @@ RSpec.describe ArtistsController, type: :controller do
 
       it "redirects to the created artist" do
         post :create, {:artist => attributes_for(:artist)}
-        #attributes_for is a factory girl method that gives hash with attributes
         expect(response).to redirect_to(Artist.last)
-        #RSpec structure expect{}.to change().by()
       end
     end
 
@@ -76,5 +72,42 @@ RSpec.describe ArtistsController, type: :controller do
         expect(response).to render_template("new")
       end
     end
+
+describe "PUT #update" do
+    context "with valid params" do
+      it "updates the requested artist" do
+        artist = create(:artist)
+        put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: "New name")}
+        artist.reload
+        expect(artist.name).to eq("New name")
+      end
+
+      it "assigns the requested artist as @artist" do
+        artist = create(:artist)
+        put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: "New name")}
+        expect(assigns(:artist)).to eq(artist)
+      end
+
+      it "redirects to the artist" do
+        artist = create(:artist)
+        put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: "New name")}
+        expect(response).to redirect_to(artist)
+      end
+    end
+
+    context "with invalid params" do
+      it "assigns the artist as @artist" do
+        artist = create(:artist)
+        put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: nil)}
+        expect(assigns(:artist)).to eq(artist)
+      end
+
+      it "re-renders the 'edit' template" do
+        artist = create(:artist)
+        put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: nil)}
+        # expect(response).to render_temp   late("edit")
+      end
+    end
   end
+end
 end
