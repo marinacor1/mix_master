@@ -1,21 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe ArtistsController, type: :controller do
-  describe "GET #index" do #HTTP method and controller action name
-    it "assigns all artists as @artists and renders the index template" do
-      artist = create(:artist) #create artist
+  describe "GET #index" do
+    it "assigns all artists as @artists and renders index template" do
+      artist = create(:artist)
+
       get(:index)
-      expect(assigns(:artists)).to eq ([artist]) #check to make sure that the instance variable equals array in database
-#assigns(:artist) is syntax to access instance vriable
+
+      expect(assigns(:artists)).to eq([artist])
       expect(response).to render_template("index")
-      #check to see instance variable is rendered
     end
   end
 
   describe "GET #show" do
-    it "assigns the specific artist as @artist and shows the show template" do
+    it "assigns the requested artist as @artist and renders show template" do
       artist = create(:artist)
-      get(:show, {:id => artist.to_param}) #passing in specific artist id
+      get :show, {:id => artist.to_param}
       expect(assigns(:artist)).to eq(artist)
       expect(response).to render_template("show")
     end
@@ -29,17 +29,12 @@ RSpec.describe ArtistsController, type: :controller do
   end
 
   describe "GET #edit" do
-    it "assigns a requested artist as @arist" do
+    it "assigns the requested artist as @artist" do
       artist = create(:artist)
-      get(:edit, {:id => artist.to_param})
+      get :edit, {:id => artist.to_param}
       expect(assigns(:artist)).to eq(artist)
-      # expect(response).to render_template("edit")
     end
   end
-
-  #was artist created?
-  #did the instance variable get assigned?
-  #was it properly redirected to the artist show page?
 
   describe "POST #create" do
     context "with valid params" do
@@ -72,8 +67,9 @@ RSpec.describe ArtistsController, type: :controller do
         expect(response).to render_template("new")
       end
     end
+  end
 
-describe "PUT #update" do
+  describe "PUT #update" do
     context "with valid params" do
       it "updates the requested artist" do
         artist = create(:artist)
@@ -105,9 +101,23 @@ describe "PUT #update" do
       it "re-renders the 'edit' template" do
         artist = create(:artist)
         put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: nil)}
-        # expect(response).to render_temp   late("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
-end
+
+  describe "DELETE #destroy" do
+    it "destroys the requested artist" do
+      artist = create(:artist)
+      expect {
+        delete :destroy, {:id => artist.to_param}
+      }.to change(Artist, :count).by(-1)
+    end
+
+    it "redirects to the artists list" do
+      artist = create(:artist)
+      delete :destroy, {:id => artist.to_param}
+      expect(response).to redirect_to(artists_path)
+    end
+  end
 end
