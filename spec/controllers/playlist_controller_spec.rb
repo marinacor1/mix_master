@@ -9,8 +9,14 @@ RSpec.describe PlaylistsController, type: :controller do
         }.to change(Playlist, :count).by(1)
       end
     end
-  end
 
+    context "with invalid params" do
+      it "assigns a newly created but unsaved playlist as @playlist" do
+        post :create, {:playlist => attributes_for(:playlist, name: nil)}
+        expect(assigns(:playlist)).to be_a_new(Playlist)
+      end
+    end
+  end
   describe "PUT #update" do
     context "with valid params" do
       it "updates the requested playlist" do
@@ -21,4 +27,5 @@ RSpec.describe PlaylistsController, type: :controller do
       end
     end
   end
+
 end
