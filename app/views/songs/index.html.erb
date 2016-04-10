@@ -1,2 +1,7 @@
-<h1><%= @song.title %> </h1>
-<%= link_to @song.artist.name, artist_path(@song.artist) %>
+<h1>All Songs</h1>
+<p><%= link_to "New Song", new_song_path %></p>
+<ul>
+  <% @songs.map do |song| %>
+  <li><%= link_to song.title, song_path(song)%></li>
+<% end  %>
+</ul>
