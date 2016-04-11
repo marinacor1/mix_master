@@ -13,7 +13,7 @@ FactoryGirl.define do
   end
 
   factory :song do
-    title
+    title #assigning title attribute to sequence title on line 11.
     artist
   end
 
@@ -23,9 +23,9 @@ FactoryGirl.define do
 
   # factory :playlist do
   #   name { generate(:playlist_name) }
-
-    # factory :playlist_with_songs do
-    #   songs { create_list(:song, 3) }
-    # end
+  #
+  #   factory :playlist_with_songs do
+  #     songs { create_list(:song, 3) }
+  #   end
   # end
 end
