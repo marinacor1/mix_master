@@ -1,7 +1,9 @@
 <h1><%= @playlist.name %> </h1>
-<p><%= link_to "Edit Playlist", edit_playlist_path(@playlist) %></p>
 <ul>
   <% @playlist.songs.each do |song| %>
   <li><%=  link_to song.title, song%></li>
   <% end %>
 </ul>
+<p><%= link_to "Edit Playlist", edit_playlist_path(@playlist) %></p>
+<p><%= link_to "Delete Playlist", playlist_path(@playlist), method: :delete, data: {confirm: "Really delete playlist?"} %></p>
+<p><%= link_to "All Playlists", playlists_path %></p>
