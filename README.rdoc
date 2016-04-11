@@ -13,4 +13,4 @@ You can see all songs.
 You can create playlists with these songs.
 
 Image of app:
-<img src="app/public/artist_page.png"
+<img src="public/artist_page.png">
