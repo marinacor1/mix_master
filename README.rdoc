@@ -9,3 +9,8 @@ Mix Master ReadMe
 * Current function:
 Allows you to create an artist and view the artist and an image. Basic CRUD functionality with artists.
 Allows you to view an artist and his/ her music, you can then add songs to the list.
+You can see all songs.
+You can create playlists with these songs.
+
+Image of app:
+<img src="app/public/artist_page.png"
